@@ -9,7 +9,6 @@ import ProgramInfo from "../components/views/ProgramInfo";
 import CEOMessage from "../components/views/CEOMessage";
 import BI from "../components/views/BI";
 import Careers from "../components/views/Careers";
-import Testimonials from "../components/views/Testimonials";
 import Enrollment from "../components/views/Enrollment";
 import DingDongResilience from "../components/views/DingDongResilience";
 import ResilienceTypes from "../components/views/ResilienceTypes";

@@ -47,7 +47,7 @@ function FormComponent({ addPost }) {
       (field) => field.trim() !== ""
     );
     setIsFormValid(allFieldsFilled && isBirthYearValid);
-  }, [formData, isBirthYearValid]);
+  }, [formData, isBirthYearValid]); // 의존성 배열에 formData와 isBirthYearValid 포함
 
   useEffect(() => {
     const calculateAgeInMonths = () => {
@@ -70,7 +70,7 @@ function FormComponent({ addPost }) {
       }
     };
     calculateAgeInMonths();
-  }, [formData.birthYear, formData.birthMonth]);
+  }, [formData.birthYear, formData.birthMonth]); // 의존성 배열에 formData.birthYear와 formData.birthMonth 포함
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -271,8 +271,8 @@ function FormComponent({ addPost }) {
         </Button>
       </VStack>
       <Text mt={4} fontSize='sm'>
-        ㈜에스와이에듀는(이하 '회사'는) 고객님의 개인정보를 중요시하며,
-        정보통신망 이용촉진 및 정보보호에 관한 법률을 준수하고 있습니다.
+        Dreamus 고객님의 개인정보를 중요시하며, 정보통신망 이용촉진 및
+        정보보호에 관한 법률을 준수하고 있습니다.
       </Text>
       <Text mt={1} fontSize='sm'>
         회사는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한

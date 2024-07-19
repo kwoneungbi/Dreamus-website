@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import ProgramTable from "./ProgramTable";
 
 function ProgramInfo() {

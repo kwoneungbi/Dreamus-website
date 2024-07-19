@@ -70,7 +70,7 @@ function FormComponent({ addPost }) {
       }
     };
     calculateAgeInMonths();
-  }, [formData.birthYear, formData.birthMonth]); // 의존성 배열에 formData.birthYear와 formData.birthMonth 포함
+  }, [formData]); // 종속성 배열에 formData 추가
 
   const handleChange = (e) => {
     const { name, value } = e.target;

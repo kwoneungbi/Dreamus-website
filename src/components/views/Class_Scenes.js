@@ -19,11 +19,9 @@ import {
   ModalBody,
   ModalFooter,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import DaumPostcode from "react-daum-postcode";
-import axios from "axios";
 
-function FormComponent() {
+const ClassScenes = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -33,15 +31,12 @@ function FormComponent() {
     birthYear: "",
     birthMonth: "",
     preferredTime: "",
-    description: "",
-    password: "",
     ageInMonths: "",
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
   const [isBirthYearValid, setIsBirthYearValid] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const allFieldsFilled = Object.values(formData).every(
@@ -86,35 +81,9 @@ function FormComponent() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost:5001/send-email",
-        formData
-      );
-      if (response.status === 200) {
-        alert("Email sent successfully!");
-        setFormData({
-          name: "",
-          phone: "",
-          postalCode: "",
-          address: "",
-          detailedAddress: "",
-          birthYear: "",
-          birthMonth: "",
-          preferredTime: "",
-          description: "",
-          password: "",
-          ageInMonths: "",
-        });
-        navigate("/"); // 전송 후 'Thank you' 페이지로 이동
-      }
-    } catch (error) {
-      console.error("There was an error sending the email!", error);
-      alert("Failed to send email. Please try again.");
-    }
+    // Handle form submission logic here
   };
 
   const handleComplete = (data) => {
@@ -142,6 +111,7 @@ function FormComponent() {
 
   return (
     <Box
+      m='30px'
       py={10}
       px={5}
       borderWidth={1}
@@ -150,7 +120,7 @@ function FormComponent() {
       boxShadow='lg'
     >
       <Heading size='md' mb={4}>
-        신청서 양식
+        수업 신청서
       </Heading>
       <VStack spacing={4} as='form' onSubmit={handleSubmit}>
         <FormControl isRequired>
@@ -212,7 +182,7 @@ function FormComponent() {
           <HStack>
             <Input
               name='birthYear'
-              placeholder='출생년도 (예: 1998)'
+              placeholder='출생년도 (예: 2021)'
               value={formData.birthYear}
               onChange={handleChange}
               flex='1'
@@ -244,7 +214,7 @@ function FormComponent() {
 
         <FormControl isRequired>
           <FormLabel>수업 희망 시간</FormLabel>
-          <Input
+          <Textarea
             name='preferredTime'
             placeholder='평일 요일/시간까지 입력'
             value={formData.preferredTime}
@@ -252,30 +222,8 @@ function FormComponent() {
           />
         </FormControl>
 
-        <FormControl>
-          <FormLabel>신청내용</FormLabel>
-          <Textarea
-            name='description'
-            placeholder='신청내용'
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </FormControl>
-
-        <FormControl isRequired>
-          <FormLabel>비밀번호</FormLabel>
-          <Input
-            name='password'
-            placeholder='비밀번호'
-            type='password'
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <FormHelperText>삭제 및 게시글 보기에 필요합니다.</FormHelperText>
-        </FormControl>
-
         <Button
-          colorScheme='gray'
+          colorScheme='blue'
           type='submit'
           disabled={!isFormValid}
           w='full'
@@ -283,19 +231,6 @@ function FormComponent() {
           신청하기
         </Button>
       </VStack>
-      <Text mt={4} fontSize='sm'>
-        Dreamus 고객님의 개인정보를 중요시하며, 정보통신망 이용촉진 및
-        정보보호에 관한 법률을 준수하고 있습니다.
-      </Text>
-      <Text mt={1} fontSize='sm'>
-        회사는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한
-        용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가
-        취해지고 있는지 알려드립니다.
-      </Text>
-      <Text mt={1} fontSize='sm'>
-        회사는 개인정보취급방침을 개정하는 경우 웹사이트 공지사항(또는
-        개별공지)을 통하여 공지할 것입니다.
-      </Text>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <ModalOverlay />
@@ -314,6 +249,6 @@ function FormComponent() {
       </Modal>
     </Box>
   );
-}
+};
 
-export default FormComponent;
+export default ClassScenes;

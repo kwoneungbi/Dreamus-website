@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Heading, Text } from "@chakra-ui/react";
-import CEOMessage from "./CEOMessage";
+import ProgramTable from "./ProgramTable";
 
-function CompanyInfo() {
+function Introduction() {
   return (
     <Box py={10}>
       <Heading mb={4}>Dreamus 소개</Heading>
@@ -12,10 +12,14 @@ function CompanyInfo() {
         <br />
         드림어스만의 다양한 창의적 예술교육을 만나보세요.
       </Text>
-      <br />
-      <CEOMessage />
+      <Box py={10}>
+        <Text fontSize='x-large' mb={4}>
+          프로그램 소개
+        </Text>
+        <ProgramTable />
+      </Box>
     </Box>
   );
 }
 
-export default CompanyInfo;
+export default Introduction;

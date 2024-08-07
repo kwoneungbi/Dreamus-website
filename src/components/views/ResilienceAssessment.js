@@ -219,27 +219,8 @@ function ResilienceAssessment({ addPost }) {
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [result, setResult] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const [childInfo, setChildInfo] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    date: "",
-    guardian: "",
-  });
 
   const handleAnswerChange = (index, value) => {
-    if (
-      !childInfo.name ||
-      !childInfo.age ||
-      !childInfo.gender ||
-      !childInfo.date ||
-      !childInfo.guardian
-    ) {
-      alert(
-        "먼저 아이의 이름, 나이, 성별, 측정 날짜, 측정 인을 입력해 주세요."
-      );
-      return;
-    }
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
@@ -281,54 +262,7 @@ function ResilienceAssessment({ addPost }) {
       <Text>
         우리 아이 회복탄력성 유형을 분석해서 만화 캐릭터로 보여 드려요^^
       </Text>
-
       <VStack align='start' spacing={4} mt={4}>
-        <HStack spacing={2} align='center'>
-          <Text width='150px'>아이의 이름:</Text>
-          <Input
-            name='name'
-            placeholder='아이의 이름'
-            value={childInfo.name}
-            onChange={handleInfoChange}
-          />
-        </HStack>
-        <HStack spacing={2} align='center'>
-          <Text width='150px'>아이의 나이:</Text>
-          <Input
-            name='age'
-            placeholder='아이의 나이'
-            value={childInfo.age}
-            onChange={handleInfoChange}
-          />
-        </HStack>
-        <HStack spacing={2} align='center'>
-          <Text width='150px'>아이의 성별:</Text>
-          <Input
-            name='gender'
-            placeholder='아이의 성별'
-            value={childInfo.gender}
-            onChange={handleInfoChange}
-          />
-        </HStack>
-        <HStack spacing={2} align='center'>
-          <Text width='150px'>측정 날짜:</Text>
-          <Input
-            name='date'
-            placeholder='측정 날짜'
-            value={childInfo.date}
-            onChange={handleInfoChange}
-          />
-        </HStack>
-        <HStack spacing={2} align='center'>
-          <Text width='150px'>측정 인:</Text>
-          <Input
-            name='guardian'
-            placeholder='측정 인 (엄마, 아빠, 기타 보호자)'
-            value={childInfo.guardian}
-            onChange={handleInfoChange}
-          />
-        </HStack>
-
         <Heading mt={10} size='lg'>
           다음 질문에 대해 해당하는 정도를 선택해주세요.
         </Heading>

@@ -5,11 +5,9 @@ import {
   Text,
   VStack,
   Button,
-  Input,
   RadioGroup,
   Radio,
   Stack,
-  HStack,
 } from "@chakra-ui/react";
 import FormComponent from "../forms/FormComponent";
 
@@ -224,11 +222,6 @@ function ResilienceAssessment({ addPost }) {
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
-  };
-
-  const handleInfoChange = (e) => {
-    const { name, value } = e.target;
-    setChildInfo((prevInfo) => ({ ...prevInfo, [name]: value }));
   };
 
   const allQuestionsAnswered = answers.every((answer) => answer !== "");

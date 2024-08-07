@@ -9,7 +9,6 @@ import {
   MenuList,
   MenuItem,
   Tooltip,
-  Icon,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { ChevronDownIcon } from "@chakra-ui/icons";
